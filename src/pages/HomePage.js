@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard";
+import React, { useState , useEffect} from "react";
+// import ProductCard from "../components/ProductCard";
 import "../styles/HomePage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -121,10 +121,6 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [searchTerm, setSearchTerm] = useState("");
-
-
-
-
   const handleImageClick = (product) => {
     navigate("/product-details", { state: { product } });
   };
@@ -133,7 +129,7 @@ const HomePage = () => {
     const matched = products.filter((product) =>
       product.product.toLowerCase().includes(searchTerm.trim().toLowerCase())
     );
-
+  
     if (matched.length > 0) {
       setFilteredProducts(matched);
     } else {
@@ -141,7 +137,7 @@ const HomePage = () => {
       setFilteredProducts(products); // reset to all products
     }
   };
-
+  
   useEffect(() => {
     const filtered = products.filter((product) =>
       product.product.toLowerCase().includes(searchTerm.toLowerCase())
@@ -153,12 +149,10 @@ const HomePage = () => {
       handleSearch();
     }
   };
-
+  
   return (
     <div className="home-container" style={{ padding: "20px" }}>
-
-
-      <div style={{ position: "relative", marginBottom: "30px" }}>
+     <div style={{ position: "relative", marginBottom: "30px" }}>
         <img
           src="https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-blue-minimalistic-flat-medical-health-banner-background-image_210029.jpg"
           alt="Product Banner"
@@ -182,18 +176,18 @@ const HomePage = () => {
           alignItems: "center",
           gap: "10px"
         }}>
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              padding: "8px 12px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-              width: "250px"
-            }}
-          />
+         <input
+  type="text"
+  placeholder="Search products..."
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  style={{
+    padding: "8px 12px",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+    width: "250px"
+  }}
+/>
 
           <button
             onClick={handleSearch}
@@ -212,26 +206,26 @@ const HomePage = () => {
       </div>
 
       <div className="product-grid" style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-        {filteredProducts.map((product, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "10px",
-              width: "250px"
-            }}
-          >
-            <img
-              src={product.image}
-              alt={product.product}
-              style={{ width: "100%", cursor: "pointer" }}
-              onClick={() => handleImageClick(product)}
-            />
-            <h3>{product.product}</h3>
-            <p>₹{product.price}</p>
-          </div>
-        ))}
+      {filteredProducts.map((product, index) => (
+  <div
+    key={index}
+    style={{
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      padding: "10px",
+      width: "250px"
+    }}
+  >
+    <img
+      src={product.image}
+      alt={product.product}
+      style={{ width: "100%", cursor: "pointer" }}
+      onClick={() => handleImageClick(product)}
+    />
+    <h3>{product.product}</h3>
+    <p>₹{product.price}</p>
+  </div>
+))}
 
 
       </div>

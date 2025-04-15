@@ -1,12 +1,9 @@
 import React,{useState, useEffect} from "react";
-import ProductCard from "../components/ProductCard";
+// import ProductCard from "../components/ProductCard";
 import "../styles/HomePage.css";
 import { useNavigate } from "react-router-dom";
 
 const products = 
-
-
-
 [
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgnnpR7Xkbo4HEDEmk3lWPhg_vepR67-eqcqlmRLaFQeVvyEmfl-TN_jf_xFUXTcXG7DU&usqp=CAU",

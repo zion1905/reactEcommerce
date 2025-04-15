@@ -9,7 +9,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/Home");
   };
 
   const handleLoginClick = () => {
