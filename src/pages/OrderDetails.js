@@ -2,7 +2,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import '../styles/OrderDetails.css';
-// import { useParams } from "react-router-dom";
 
 
 const OrderDetails = () => {
