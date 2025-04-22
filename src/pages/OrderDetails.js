@@ -1,34 +1,28 @@
-// pages/OrderDetails.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import '../styles/OrderDetails.css';
-
-
+import "../styles/OrderDetails.css";
 const OrderDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-
-  if (!product) {
-    return <p style={{ padding: "20px" }}>No product found.</p>;
-  }
-
+  const [isLoggedIn,setIsLoggedIn]=useState(localStorage.getItem("isLoggedIn"))
+ 
   const handleBuyNow = () => {
-    const userData = localStorage.getItem("currentUser");
+    if (isLoggedIn) {
 
-    try {
-      const user = JSON.parse(userData);
-      if (user && user.email) {
-        // Logged in user
-        navigate("/confirm-order", { state: { product } });
-      } else {
-        throw new Error("Invalid user");
-      }
-    } catch (error) {
+      //  User is logged in
+      navigate("/confirm-order", { state: { product } });
+    } else {
+      //  User is not logged in
       alert("Please login to continue with your purchase.");
       navigate("/login");
     }
   };
+
+
+  if (!product) {
+    return <p style={{ padding: "20px" }}>No product found.</p>;
+  }
 
   return (
     <div className="order-details-container">
@@ -50,9 +44,9 @@ const OrderDetails = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         Go Back
       </button>
-      
     </div>
   );
 };
 
 export default OrderDetails;
+

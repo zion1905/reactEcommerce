@@ -1,30 +1,59 @@
-// pages/OrderConfirmation.js
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { getDatabase, ref, get } from "firebase/database";
 import "../styles/OrderConfirmation.css";
 
 const OrderConfirmation = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const product = state?.product;
 
   const [quantity, setQuantity] = useState(1);
+  const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
+  const [product, setProduct] = useState(state?.product || null);
   const [isEditing, setIsEditing] = useState(false);
+
   const [deliveryDetails, setDeliveryDetails] = useState({
-    name: "zion",
-    phone: "6380244180",
-    address: "chennai",
-    paymentMethod: "case on delivary",
+    name: "",
+    phone: "",
+    address: "",
+    cardNumber: "",
+    expiry: "",
+    cvv: "",
   });
 
-  //  Check login on mount
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    if (!user || !user.email) {
+    const auth = getAuth();
+    const db = getDatabase();
+    const user = auth.currentUser;
+
+    if (!user) {
       alert("Please login to continue");
       navigate("/login");
+      return;
     }
+
+    const userRef = ref(db, `users/${user.uid}`);
+    get(userRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          setDeliveryDetails((prev) => ({
+            ...prev,
+            name: userData.name || "",
+            phone: userData.phone || "",
+            address: userData.address || "",
+          }));
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to load user data", error);
+      });
   }, [navigate]);
+
+  const handleEditToggle = () => {
+    setIsEditing((prev) => !prev);
+  };
 
   const handleQuantityChange = (delta) => {
     setQuantity((prev) => Math.max(1, prev + delta));
@@ -38,25 +67,26 @@ const OrderConfirmation = () => {
     }));
   };
 
-  const handleEditToggle = () => {
-    setIsEditing((prev) => !prev);
+  const handlePaymentSelect = (method) => {
+    setPaymentMethod(method);
   };
 
   const handleConfirmOrder = () => {
-    navigate("/order-success", {
-      state: {
-        product,
-        quantity,
-        deliveryDetails,
-      total: product.price * quantity + 10,
-     
+    const orderData = {
+      product,
+      quantity,
+      deliveryDetails: {
+        ...deliveryDetails,
+        paymentMethod,
       },
-    });
+      total: product.price * quantity + 10,
+    };
+
+    localStorage.setItem("orderData", JSON.stringify(orderData));
+    navigate("/payment-success", { state: orderData });
   };
 
-  if (!product) {
-    return <p className="no-product">No product data found.</p>;
-  }
+  if (!product) return <p className="no-product">No product data found.</p>;
 
   const productTotal = product.price * quantity;
   const deliveryFee = 10;
@@ -64,60 +94,119 @@ const OrderConfirmation = () => {
 
   return (
     <div className="order-confirmation-container">
+      {/* Order Summary */}
       <div className="order-summary-wrapper">
-        {/* Left */}
         <div className="order-summary-left">
-          <h2 className="section-title">Order Summary</h2>
+          <h2>Order Summary</h2>
           <div className="product-details">
             <img src={product.image} alt={product.product} className="product-image" />
             <div>
-              <p className="product-name">{product.product}</p>
-              <p className="product-price">₹{product.price.toFixed(2)} INR</p>
+              <p>{product.product}</p>
+              <p>₹{product.price.toFixed(2)} INR</p>
             </div>
             <div className="quantity-controller">
-              <button onClick={() => handleQuantityChange(-1)} className="quantity-btn">-</button>
-              <input type="text" value={quantity} readOnly className="quantity-input" />
-              <button onClick={() => handleQuantityChange(1)} className="quantity-btn">+</button>
+              <button onClick={() => handleQuantityChange(-1)} className="butn">-</button>
+              <input type="text" value={quantity} readOnly />
+              <button onClick={() => handleQuantityChange(1)} className="butn">+</button>
             </div>
-            <p className="product-total">Total: ₹{productTotal.toFixed(2)} INR</p>
+            <p>Total: ₹{productTotal.toFixed(2)} INR</p>
           </div>
         </div>
 
-
-         {/* Right */}
         <div className="order-summary-box">
-          <h2 className="section-title">Order Summary</h2>
-          <div className="price-breakup">
-            <p>Product Total <span className="float-right">{productTotal.toFixed(2)} INR</span></p>
-            <p>Delivery Fee <span className="float-right">{deliveryFee} INR</span></p>
-            <p><strong className="grand-label">Grand Total</strong> <span className="grand-total">{grandTotal.toFixed(2)} INR</span></p>
-          </div>
-          <button onClick={handleConfirmOrder} className="confirm-btn"> Confirm Order    </button>
-       
-       
+          <h2>Order Summary</h2>
+          <p>Product Total: ₹{productTotal.toFixed(2)}</p>
+          <p>Delivery Fee: ₹{deliveryFee}</p>
+          <p><strong>Grand Total: ₹{grandTotal.toFixed(2)}</strong></p>
+
+          <button onClick={handleConfirmOrder} className="confirm-btn">
+            {paymentMethod === "Pay with Card" ? "Pay Now" : "Confirm Order"}
+          </button>
         </div>
       </div>
 
-      {/* Delivery */}
-      
+      {/* Delivery Details */}
       <div className="delivery-details">
-        <h2 className="section-title">Delivery Details</h2>
-        <p><strong>Name</strong><br />
-          <input name="name" value={deliveryDetails.name} onChange={handleInputChange} disabled={!isEditing} className="input-full" />
-        </p>
-        <p><strong>Phone Number</strong><br />
-          <input name="phone" value={deliveryDetails.phone} onChange={handleInputChange} disabled={!isEditing} className="input-full" />
-        </p>
-        <p><strong>Address</strong><br />
-          <input name="address" value={deliveryDetails.address} onChange={handleInputChange} disabled={!isEditing} className="input-full" />
-        </p>
-        <p><strong>Payment Method</strong><br />
-          <input name="paymentMethod" value={deliveryDetails.paymentMethod} onChange={handleInputChange} disabled={!isEditing} className="input-full" />
-        </p>
-        <button onClick={handleEditToggle} className="edit-btn">{isEditing ? "Save" : "Edit"}</button>
+        <h2>Delivery Details</h2>
+
+        <label>Name</label>
+        <input
+          name="name"
+          value={deliveryDetails.name}
+          onChange={handleInputChange}
+          readOnly={!isEditing}
+        />
+
+        <label>Phone</label>
+        <input
+          name="phone"
+          value={deliveryDetails.phone}
+          onChange={handleInputChange}
+          readOnly={!isEditing}
+        />
+
+        <label>Address</label>
+        <input
+          name="address"
+          value={deliveryDetails.address}
+          onChange={handleInputChange}
+          readOnly={!isEditing}
+        />
+
+        <label>Payment Method</label>
+        <div className="payment-options">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+            alt="Cash on Delivery"
+            onClick={() => handlePaymentSelect("Cash on Delivery")}
+            className={`payment-method-image ${paymentMethod === "Cash on Delivery" ? "active" : ""}`}
+          />
+          <img
+            src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202306/ezgif-sixteen_nine_197.jpg?size=948:533"
+            alt="Pay with Card"
+            onClick={() => handlePaymentSelect("Pay with Card")}
+            className={`payment-method-image ${paymentMethod === "Pay with Card" ? "active" : ""}`}
+          />
+        </div>
+
+        {paymentMethod === "Pay with Card" && (
+          <div>
+            <label>Card Number</label>
+            <input
+              name="cardNumber"
+              value={deliveryDetails.cardNumber}
+              onChange={handleInputChange}
+              placeholder="1234 5678 9012 3456"
+              readOnly={!isEditing}
+            />
+            <label>Expiry</label>
+            <input
+              name="expiry"
+              value={deliveryDetails.expiry}
+              onChange={handleInputChange}
+              placeholder="MM/YY"
+              readOnly={!isEditing}
+            />
+            <label>CVV</label>
+            <input
+              name="cvv"
+              type="password"
+              value={deliveryDetails.cvv}
+              onChange={handleInputChange}
+              placeholder="123"
+              readOnly={!isEditing}
+            />
+          </div>
+        )}
+
+        <button onClick={handleEditToggle} className="edit-btn">
+          {isEditing ? "Save" : "Edit"}
+        </button>
       </div>
     </div>
   );
 };
 
 export default OrderConfirmation;
+
+
