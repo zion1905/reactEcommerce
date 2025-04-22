@@ -23,21 +23,20 @@ const OrderConfirmation = () => {
   });
 
   useEffect(() => {
+    
     const auth = getAuth();
     const db = getDatabase();
     const user = auth.currentUser;
 
-    if (!user) {
-      alert("Please login to continue");
-      navigate("/login");
-      return;
-    }
-
     const userRef = ref(db, `users/${user.uid}`);
     get(userRef)
       .then((snapshot) => {
+        console.log("DS");
+        
         if (snapshot.exists()) {
           const userData = snapshot.val();
+          console.log(userData);
+          
           setDeliveryDetails((prev) => ({
             ...prev,
             name: userData.name || "",
@@ -49,7 +48,7 @@ const OrderConfirmation = () => {
       .catch((error) => {
         console.error("Failed to load user data", error);
       });
-  }, [navigate]);
+  }, []);
 
   const handleEditToggle = () => {
     setIsEditing((prev) => !prev);
@@ -80,9 +79,12 @@ const OrderConfirmation = () => {
         paymentMethod,
       },
       total: product.price * quantity + 10,
+      time: new Date().getTime()
     };
 
-    localStorage.setItem("orderData", JSON.stringify(orderData));
+    let orders=JSON.parse(localStorage.getItem("orderedItems"))||[]
+    orders.push(orderData)
+    localStorage.setItem("orderedItems", JSON.stringify(orders));
     navigate("/payment-success", { state: orderData });
   };
 

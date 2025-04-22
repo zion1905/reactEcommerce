@@ -12,6 +12,7 @@ import Profile from "./components/ProfilePage";
 import AuthForm from "./components/AuthForm";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import ContactUs from "./pages/ContactUs";
+import OrderHistory from "./pages/OrderHistory";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
@@ -25,6 +26,7 @@ function App() {
         <Route path="/first-aid" element={<FirstAidPage />} />
         <Route path="/medicine" element={<MedicinePage />} />
         <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/order-history" element={<OrderHistory/>}/>
 
         <Route path="/product-details" element={<OrderDetails />} />
         <Route path="/confirm-order" element={<OrderConfirmation />} />

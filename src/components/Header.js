@@ -29,6 +29,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
             <Link to="/first-aid">First Aid</Link>
             <Link to="/medicine">Medicine</Link>
             <Link to="/contactUs">Contact</Link>
+            <Link to='/order-history'>Order History</Link>
 
           </nav>
     
