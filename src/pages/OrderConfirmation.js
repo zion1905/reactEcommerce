@@ -12,7 +12,8 @@ const OrderConfirmation = () => {
 
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
-  const [product, setProduct] = useState(state?.product || null);
+  // const [product, setProduct] = useState(state?.product || null);
+  const product = state?.product || null
   const [isEditing, setIsEditing] = useState(false);
 
   const [deliveryDetails, setDeliveryDetails] = useState({
@@ -53,7 +54,7 @@ const OrderConfirmation = () => {
       .catch((error) => {
         console.error("Failed to load user data", error);
       });
-  }, []);
+  });
 
   const handleEditToggle = () => {
     setIsEditing((prev) => !prev);

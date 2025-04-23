@@ -4,7 +4,7 @@ import "../styles/Form.css";
 import { auth, ref, set, db } from "../utils/fireBase";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  // signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { useFormik } from "formik";
@@ -42,7 +42,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
 
       try {
         if (isLogin) {
-          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          // const userCredential = await signInWithEmailAndPassword(auth, email, password);
           localStorage.setItem("isLoggedIn", true);
           setIsLoggedIn(true);
           navigate("/home");

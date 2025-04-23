@@ -5,7 +5,8 @@ import {db,ref,get} from "../utils/fireBase"
   
   const HomePage = () => {
     const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState("");
+    // const [searchTerm, setSearchTerm] = useState("");
+    const searchTerm = ""
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [products,setProducts]=useState([])
     

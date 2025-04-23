@@ -14,12 +14,12 @@ export default function OrderHistory() {
     })
     setOrders(products)
 
-  }, [])
+  },[now,oneDay])
 
   function handleCancel(orderIndex) {
       let confirmCancel= window.confirm("Are you sure want to cancel the order")
       if(confirmCancel){
-        let remainingProducts=orders.filter((order,index)=>index!=orderIndex)
+        let remainingProducts=orders.filter((order,index)=>index!==orderIndex)
         setOrders(remainingProducts)
         localStorage.setItem('orderedItems',JSON.stringify(remainingProducts))
       }
@@ -30,7 +30,7 @@ export default function OrderHistory() {
     <div style={{minHeight:'85vh'}}>
     <div className="order-history-container">
     <h2 className="order-history-title">Order History</h2>
-    {orders.length==0?<div className="no-orders" ><h4>No Orders</h4></div>:
+    {orders.length===0?<div className="no-orders" ><h4>No Orders</h4></div>:
     <div className="order-list">
     {orders.map((order, index) => (
       <div key={index} className="order-card">

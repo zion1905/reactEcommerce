@@ -43,7 +43,7 @@ const HomePage = () => {
           );
           setFilteredProducts(matched);
         }
-      }, [searchTerm, allProducts]);
+      }, [searchTerm, allProducts,products]);
     return (
     <div className="home-container" style={{ padding: "20px" }}>
      <div style={{ position: "relative", marginBottom: "30px" }}>

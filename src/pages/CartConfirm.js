@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/OrderConfirmation.css";
 
@@ -7,7 +7,8 @@ const CartConfimation = () => {
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState(state?.product || null);
+  // const [product, setProduct] = useState(state?.product || null);
+  const product = state?.product || null
 
 
 

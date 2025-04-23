@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/OrderDetails.css";
 const OrderDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-  const [isLoggedIn,setIsLoggedIn]=useState(localStorage.getItem("isLoggedIn"))
+  // const [isLoggedIn,setIsLoggedIn]=useState(localStorage.getItem("isLoggedIn"))
+  const isLoggedIn = localStorage.getItem("isLoggedIn")
  
   const handleBuyNow = () => {
     if (isLoggedIn) {
