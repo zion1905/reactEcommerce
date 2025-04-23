@@ -6,6 +6,8 @@ import "../styles/OrderConfirmation.css";
 
 const OrderConfirmation = () => {
   const { state } = useLocation();
+  console.log(state);
+  
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
@@ -27,7 +29,10 @@ const OrderConfirmation = () => {
     const auth = getAuth();
     const db = getDatabase();
     const user = auth.currentUser;
-
+    if (!user) {
+      alert("Please Login")
+      navigate('/login')
+    }
     const userRef = ref(db, `users/${user.uid}`);
     get(userRef)
       .then((snapshot) => {

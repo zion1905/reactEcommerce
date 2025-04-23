@@ -8,7 +8,7 @@ export default function OrderHistory() {
 
   useEffect(() => {
 
-    let products = JSON.parse(localStorage.getItem('orderedItems'))
+    let products = JSON.parse(localStorage.getItem('orderedItems'))||[]
     products= products.map(product=>{
       return {...product,isLessThanOneDay:now - product.time <= oneDay?true:false}
     })

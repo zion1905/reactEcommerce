@@ -13,6 +13,8 @@ import AuthForm from "./components/AuthForm";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import ContactUs from "./pages/ContactUs";
 import OrderHistory from "./pages/OrderHistory";
+import CartConfimation from "./pages/CartConfirm";
+import Cart from "./pages/CartPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
@@ -34,6 +36,9 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<AuthForm />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/confirm-cart" element={<CartConfimation />} />
+        <Route path="/cart" element={<Cart />} />
+
 
         <Route path="/login" element={<AuthForm setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/payment-success" element={<PaymentSuccess />} />
