@@ -1,8 +1,48 @@
+/* html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
 .footer {
     background-color: #258dc0;
-    padding: 20px;
+    padding:1px;
     text-align: center;
     color: #fff;
-    
+  } */
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .footer {
+    background-color: #258dc0;
+    padding: 10px 0; /* Increased padding for more space */
+    text-align: center;
+    color: #fff;
+    margin-bottom: 100px;
+    margin-top: auto; /* Ensures the footer stays at the bottom */
   }
   
