@@ -7,7 +7,6 @@ const CartConfimation = () => {
   const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
-  // const [product, setProduct] = useState(state?.product || null);
   const product = state?.product || null
 
 

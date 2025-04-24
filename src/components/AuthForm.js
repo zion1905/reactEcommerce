@@ -4,11 +4,13 @@ import "../styles/Form.css";
 import { auth, ref, set, db } from "../utils/fireBase";
 import {
   createUserWithEmailAndPassword,
-  // signInWithEmailAndPassword,
+  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const AuthForm = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
@@ -42,7 +44,9 @@ const AuthForm = ({ setIsLoggedIn }) => {
 
       try {
         if (isLogin) {
-          // const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const userCredential = await signInWithEmailAndPassword(auth, email, password);
+          const user = userCredential.user;
+          localStorage.setItem("userUid",user.uid)
           localStorage.setItem("isLoggedIn", true);
           setIsLoggedIn(true);
           navigate("/home");
@@ -62,7 +66,10 @@ const AuthForm = ({ setIsLoggedIn }) => {
           });
 
           alert("Registration successful!");
+          localStorage.setItem("userUid",user.uid)
           localStorage.setItem("isLoggedIn", true);
+          localStorage.removeItem("cartItems")
+          localStorage.removeItem("orderedItems")
           setIsLoggedIn(true);
           navigate("/home");
           resetForm();
@@ -75,6 +82,8 @@ const AuthForm = ({ setIsLoggedIn }) => {
   });
 
   return (
+    <>
+    <Header />
     <div className="bg-setup">
       <div className="form-container">
         <h2>{isLogin ? "Login" : "Register"}</h2>
@@ -127,6 +136,8 @@ const AuthForm = ({ setIsLoggedIn }) => {
         </p>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

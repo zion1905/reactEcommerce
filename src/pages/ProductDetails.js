@@ -1,20 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../styles/OrderDetails.css";
-const OrderDetails = () => {
+import "../styles/ProductDetail.css";
+
+const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-  // const [isLoggedIn,setIsLoggedIn]=useState(localStorage.getItem("isLoggedIn"))
-  const isLoggedIn = localStorage.getItem("isLoggedIn")
+  const [isLoggedIn, _] = useState(localStorage.getItem("isLoggedIn")=='true')
+  const [cartItems,__]=useState(JSON.parse(localStorage.getItem("cartItems")))
+
+  const existsInCart = cartItems.some(
+    (item) => item.product.product === product.product
+  );
  
   const handleBuyNow = () => {
-    if (isLoggedIn) {
-
-      //  User is logged in
+    if (isLoggedIn) {  
+      localStorage.setItem("isFromCartPage",false)    
       navigate("/confirm-order", { state: { product } });
     } else {
-      //  User is not logged in
       alert("Please login to continue with your purchase.");
       navigate("/login");
     }
@@ -22,14 +25,16 @@ const OrderDetails = () => {
 
   const handleCart = () => {
     if (isLoggedIn) {
-
-      //  User is logged in
       navigate("/confirm-cart", { state: { product } });
     } else {
-      //  User is not logged in
       alert("Please login to continue with your purchase.");
       navigate("/login");
     }
+  };
+
+  const handleVisitCart = () => {
+    navigate("/cart");
+    
   };
 
 
@@ -54,9 +59,13 @@ const OrderDetails = () => {
         Buy Now
       </button>
 
-      <button  style={{marginLeft:10}} className="buy-button" onClick={handleCart}>
+      {existsInCart ? <button  style={{marginLeft:10}} className="buy-button" onClick={handleVisitCart}>
+        Visit Cart
+      </button> :
+       <button  style={{marginLeft:10}} className="buy-button" onClick={handleCart}>
         Add to Cart
       </button>
+      }
 
       <button className="back-button" onClick={() => navigate(-1)}>
         Go Back
@@ -65,5 +74,5 @@ const OrderDetails = () => {
   );
 };
 
-export default OrderDetails;
+export default ProductDetail;
 

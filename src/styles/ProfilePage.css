@@ -1,24 +1,149 @@
-.profile-card {
-  max-width: 400px;
-  margin: 120px auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f9fafb;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
+/* 
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  background-image: url(https://image.slidesdocs.com/responsive-images/background/blue-cross-medical-abstract-health-theme-blue-health-powerpoint-background_952ad55646__960_540.jpg);
+background-repeat: no-repeat;
+background-size: cover;
 }
+
+.profile-card {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 28px;
+}
+
+.profile-card label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 500;
+  color: #444;
+}
+
 .profile-card input {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  margin: 10px;
-}
-.profile-card button {
-  width: 100%;
-  padding: 10px;
-  background-color: #1e40af;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
 }
 
+.profile-card input:disabled {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+.profile-card input:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+.edit-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #1e90ff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #0077e6;
+}
+
+ */
+
+
+ /* ProfilePage.css */
+
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f5f7fa;
+  min-height: 73.7vh;
+  background-image: url(https://image.slidesdocs.com/responsive-images/background/blue-cross-medical-abstract-health-theme-blue-health-powerpoint-background_952ad55646__960_540.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden; /* Prevents content from overflowing the page */
+}
+
+.profile-card {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  overflow-y: auto; /* Ensures content within the profile card can scroll if it's too long */
+}
+
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+  font-size: 28px;
+}
+
+.profile-card label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+.profile-card input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.profile-card input:disabled {
+  background-color: #f0f0f0;
+  color: #888;
+}
+
+.profile-card input:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+.edit-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #1e90ff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #0077e6;
+}
