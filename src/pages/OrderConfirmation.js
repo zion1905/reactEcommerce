@@ -5,7 +5,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-// import { getAuth } from "firebase/auth";
 import { getDatabase, ref, get } from "firebase/database";
 import "../styles/OrderConfirmation.css";
 
