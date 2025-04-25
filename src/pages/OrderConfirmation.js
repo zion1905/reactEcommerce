@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getDatabase, ref, get } from "firebase/database";
@@ -27,24 +22,24 @@ const OrderConfirmation = () => {
   });
 
   useEffect(() => {
-      const db = getDatabase();
-      const userUid=localStorage.getItem("userUid")
-      const userRef = ref(db, `users/${userUid}`);
-      get(userRef)
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            const userData = snapshot.val();
-            setDeliveryDetails((prev) => ({
-              ...prev,
-              name: userData.name || "",
-              phone: userData.phone || "",
-              address: userData.address || "",
-            }));
-          }
-        })
-        .catch((error) => {
-          console.error("Failed to load user data", error);
-        });
+    const db = getDatabase();
+    const userUid = localStorage.getItem("userUid")
+    const userRef = ref(db, `users/${userUid}`);
+    get(userRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          setDeliveryDetails((prev) => ({
+            ...prev,
+            name: userData.name || "",
+            phone: userData.phone || "",
+            address: userData.address || "",
+          }));
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to load user data", error);
+      });
 
   }, []);
 
@@ -81,10 +76,10 @@ const OrderConfirmation = () => {
       time: new Date().getTime(),
     };
 
-    let isFromCartPage=localStorage.getItem("isFromCartPage")==='true'
-    
-    if(isFromCartPage){
-      let cartItems=JSON.parse(localStorage.getItem("cartItems"))
+    let isFromCartPage = localStorage.getItem("isFromCartPage") === 'true'
+
+    if (isFromCartPage) {
+      let cartItems = JSON.parse(localStorage.getItem("cartItems"))
 
       cartItems = cartItems.filter(
         (item) => item.product.product !== product.product

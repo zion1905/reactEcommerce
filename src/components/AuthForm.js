@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useFormik } from "formik";
+import { useFormik,Form,Field,Formik } from "formik";
 import * as Yup from "yup";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -39,7 +39,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
       password: "",
     },
     validationSchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       const { email, password, firstName } = values;
 
       try {
@@ -72,7 +72,6 @@ const AuthForm = ({ setIsLoggedIn }) => {
           localStorage.removeItem("orderedItems")
           setIsLoggedIn(true);
           navigate("/home");
-          resetForm();
         }
       } catch (error) {
         console.error("Auth error:", error.message);
@@ -87,10 +86,11 @@ const AuthForm = ({ setIsLoggedIn }) => {
     <div className="bg-setup">
       <div className="form-container">
         <h2>{isLogin ? "Login" : "Register"}</h2>
-        <form onSubmit={formik.handleSubmit}>
+        <Formik>
+        <Form onSubmit={formik.handleSubmit}>
           {!isLogin && (
             <>
-              <input
+              <Field
                 type="text"
                 name="firstName"
                 placeholder="Name"
@@ -103,7 +103,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
               )}
             </>
           )}
-          <input
+          <Field
             type="email"
             name="email"
             placeholder="Email"
@@ -114,7 +114,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
           {formik.touched.email && formik.errors.email && (
             <div className="error">{formik.errors.email}</div>
           )}
-          <input
+          <Field
             type="password"
             name="password"
             placeholder="Password"
@@ -126,7 +126,8 @@ const AuthForm = ({ setIsLoggedIn }) => {
             <div className="error">{formik.errors.password}</div>
           )}
           <button type="submit">{isLogin ? "Login" : "Register"}</button>
-        </form>
+        </Form>
+        </Formik>
 
         <p className="toggle-text">
           {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}

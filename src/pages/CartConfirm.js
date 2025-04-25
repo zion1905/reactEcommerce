@@ -32,7 +32,7 @@ const CartConfimation = () => {
 
 
   return (
-    <div style={{minHeight:'80vh'}} >
+    <div>
     <div className="order-confirmation-container">
       {/* Order Summary */}
       <div className="order-summary-wrapper">
