@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/ProductDetail.css";
 
@@ -6,8 +6,10 @@ const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-  const [isLoggedIn, _] = useState(localStorage.getItem("isLoggedIn")=='true')
-  const [cartItems,__]=useState(JSON.parse(localStorage.getItem("cartItems")))
+  // const [isLoggedIn, _] = useState()
+  // const [cartItems,__]=useState()
+  const isLoggedIn = localStorage.getItem("isLoggedIn")==='true'
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"))
 
   const existsInCart = cartItems.some(
     (item) => item.product.product === product.product
