@@ -79,7 +79,7 @@ const OrderConfirmation = () => {
     let isFromCartPage = localStorage.getItem("isFromCartPage") === 'true'
 
     if (isFromCartPage) {
-      let cartItems = JSON.parse(localStorage.getItem("cartItems"))
+      let cartItems = JSON.parse(localStorage.getItem("cartItems"))||[]
 
       cartItems = cartItems.filter(
         (item) => item.product.product !== product.product

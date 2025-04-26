@@ -6,10 +6,8 @@ const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-  // const [isLoggedIn, _] = useState()
-  // const [cartItems,__]=useState()
   const isLoggedIn = localStorage.getItem("isLoggedIn")==='true'
-  const cartItems = JSON.parse(localStorage.getItem("cartItems"))
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"))||[]
 
   const existsInCart = cartItems.some(
     (item) => item.product.product === product.product

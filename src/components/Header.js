@@ -2,24 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
 import { useLocation } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const [isLoginPage,setIsLogInPage]=useState(false)
-
-
+  const [isLoginPage, setIsLogInPage] = useState(false)
+  const auth = getAuth();
   useEffect(() => {
     setIsLogInPage(location.pathname.includes("login"))
   }, [location.pathname])
-  
-
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("userUid");
-    setIsLoggedIn(false);
-    navigate("/Home");
+    signOut(auth)
+      .then(() => {
+        console.log("User signed out successfully");
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userUid");
+        setIsLoggedIn(false);
+        navigate("/Home");
+      })
+      .catch((error) => {
+        console.error("Sign out error:", error);
+      });
+
   };
 
   const handleLoginClick = () => {
@@ -65,8 +71,8 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         ) : (
           !isLoginPage && (
             <button onClick={handleLoginClick}>Login</button>
-          ) 
-      )}
+          )
+        )}
       </div>
     </header>
   );
