@@ -2,7 +2,6 @@ import React, { useEffect,useState } from "react";
 import "../styles/orderHistory.css";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Cart() {
   const [orders,setOrders]=useState([])
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ export default function Cart() {
     <div style={{minHeight:'85vh'}}>
     <div className="order-history-container">
     <h2 className="order-history-title">Cart</h2>
-    {orders.length===0?<div className="no-orders" ><h4>No Products</h4></div>:
+    {orders.length===0?<div className="no-orders" ><h4>No Products</h4></div>:    
     <div className="order-list">
     {orders.map((order, index) => (
       <div key={index} className="order-card">
@@ -43,7 +42,7 @@ export default function Cart() {
         </div>
         <div>
             <button onClick={()=>handleRemove(index)}>Remove</button> 
-            <button onClick={()=>handleCheckout(order.product)}>Checkout</button> 
+            <button className="checkout-btn" onClick={()=>handleCheckout(order.product)}>Checkout</button> 
              
         </div>
       </div>

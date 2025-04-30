@@ -7,13 +7,11 @@ const PaymentSuccess = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Save the order data to localStorage in case the user needs it again
     localStorage.setItem("orderData", JSON.stringify(state));
 
-    // Automatically redirect to order success after 5 seconds
     const timer = setTimeout(() => {
       navigate("/order-success", { state });
-    }, 5000); // 5 seconds delay
+    }, 5000); 
 
     return () => clearTimeout(timer);
   }, [navigate, state]);

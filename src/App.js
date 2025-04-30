@@ -18,6 +18,7 @@ import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFound from "./components/NotFound";
 import ProductDetail from "./pages/ProductDetails";
+import AdminPage from "./pages/AdminPage";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/medicine" element={<MedicinePage />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/product-details" element={<ProductDetail />} />
+          <Route path="/adminPage" element={<AdminPage/>}/>
         </Route>
 
         {/* Auth Route (Public) */}

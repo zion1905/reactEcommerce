@@ -21,7 +21,7 @@ const OrderSuccess = () => {
       <p><strong>Address:</strong> {deliveryDetails.address}</p>
       <p><strong>Phone:</strong> {deliveryDetails.phone}</p>
       <p><strong>Payment Method:</strong> {deliveryDetails.paymentMethod}</p>
-      <h4><strong> Your order will be delivered within 7 days.
+      <h4><strong> Your order will be delivered within 3 days.
       </strong></h4>
     </div>
    

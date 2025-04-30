@@ -8,7 +8,6 @@ import Footer from "./Footer";
 
 const Layout = ({isLoggedIn,setIsLoggedIn}) => {
 
-  // const location = useLocation();
   useEffect(() => {
       setIsLoggedIn(localStorage.getItem("isLoggedIn") === 'true')
   })

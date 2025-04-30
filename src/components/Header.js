@@ -47,6 +47,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         <Link to="/first-aid">First Aid</Link>
         <Link to="/medicine">Medicine</Link>
         <Link to="/contactUs">Contact</Link>
+        {/* <Link to="/AdminPage">AdminPage</Link> */}
       </nav>
 
       <div className="nav-auth">

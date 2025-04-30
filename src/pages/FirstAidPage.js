@@ -18,7 +18,7 @@ import {db,ref,get} from "../utils/fireBase"
 
     }, [])
     
-        
+          
     useEffect(() => {
       const filtered = products.filter((product) =>
         product.product.toLowerCase().includes(searchTerm.toLowerCase()) ||
