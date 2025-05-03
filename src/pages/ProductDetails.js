@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/ProductDetail.css";
 
@@ -6,20 +6,23 @@ const ProductDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const product = location.state?.product;
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === 'true';
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [quantity] = useState(1);
 
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const [existsInCart,setExistsInCart]=useState(false)
+  // ✅ Memoize cartItems to avoid re-creating it on every render
+  const cartItems = useMemo(() => {
+    return JSON.parse(localStorage.getItem("cartItems")) || [];
+  }, []);
 
-  
+  const [existsInCart, setExistsInCart] = useState(false);
 
   useEffect(() => {
-    const existsInCart = cartItems.some(
+    const exists = cartItems.some(
       (item) => item.product.product === product.product
     );
-    setExistsInCart(existsInCart)
-  }, [product])
+    setExistsInCart(exists);
+  }, [product, cartItems]);
+  
   
 
   const handleBuyNow = () => {
