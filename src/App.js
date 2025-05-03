@@ -38,7 +38,6 @@ function App() {
           <Route path="/medicine" element={<MedicinePage />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/product-details" element={<ProductDetail />} />
-          <Route path="/adminPage" element={<AdminPage/>}/>
         </Route>
 
         {/* Auth Route (Public) */}
@@ -54,6 +53,7 @@ function App() {
             <Route path="/confirm-cart" element={<CartConfimation />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Route>
         </Route>
 

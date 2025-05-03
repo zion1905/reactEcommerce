@@ -8,8 +8,8 @@ const ProductCard = ({ product }) => {
       <h3>{product.product}</h3>
       <p>{product.description.slice(0, 100)}...</p>
       <p>Price: ₹{product.price}</p>
-      <p>Size: {product.Size}</p>
-      <p>Rating: ⭐ {product.Rating}</p>
+      <p>Size: {product.size}</p>
+      <p>Rating: ⭐ {product.rating}</p>
     </div>
   );
 };

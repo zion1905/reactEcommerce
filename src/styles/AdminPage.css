@@ -9,7 +9,7 @@
   border-radius: 6px;
 }
 
-.admin-form button {
+button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -18,6 +18,45 @@
   cursor: pointer;
 }
 
-.admin-form button:hover {
+ button:hover {
   background-color: #0056b3;
+}
+
+
+.cancel-btn{
+  background-color: rgb(241, 49, 49) !important;
+}
+
+.allProductsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+
+.productCard {
+  width: 23%; 
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.productCard img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px 0;
+}
+
+.productCard button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  margin-left: 6px;
+
 }

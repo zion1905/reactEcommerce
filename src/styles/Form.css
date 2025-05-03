@@ -1,67 +1,123 @@
+/* Base Reset */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
 }
 
+/* Background Image Setup */
 .bg-setup {
   background-image: url("https://t4.ftcdn.net/jpg/04/24/30/93/360_F_424309320_UkOxg2z3sq7yXwGnWCO6xBXkRI4byhnI.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 100%;
-  min-height: 83.7vh; 
-  overflow: hidden;
-  place-content: center;
-  height:50vh;
-}
-.form-container {
-  max-width: fit-content;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-
+  padding: 20px;
 }
 
+/* Form Container */
+.form-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Header */
 .form-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 28px;
+  color: #0f172a;
+  margin-bottom: 10px;
 }
 
+/* Inputs */
 .form-container input {
-  width: 95% !important;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s ease;
 }
+
+.form-container input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+}
+
+/* Button */
 .form-container button {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  padding: 12px;
+  background-color: #0ea5e9;
   color: white;
   border: none;
-  font-weight: bold;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
-}
-.toggle-text {
-  text-align: center;
-  margin-top: 15px;
-}
-.toggle-text span {
-  color: #007bff;
-  cursor: pointer;
-  font-weight: bold;
-}
-.error{
-  color: red;
+  transition: background-color 0.3s ease;
 }
 
+.form-container button:hover {
+  background-color: #0284c7;
+}
+
+/* Toggle Text */
+.toggle-text {
+  text-align: center;
+  font-size: 14px;
+  color: #475569;
+  margin-top: 10px;
+}
+
+.toggle-text span {
+  color: #0ea5e9;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.toggle-text span:hover {
+  color: #0284c7;
+}
+
+/* Error Message */
+.error {
+  color: red;
+  font-size: 13px;
+  text-align: left;
+  margin-top: -10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .form-container h2 {
+    font-size: 24px;
+  }
+}

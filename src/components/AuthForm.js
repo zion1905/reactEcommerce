@@ -46,6 +46,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
         if (isLogin) {
           const userCredential = await signInWithEmailAndPassword(auth, email, password);
           const user = userCredential.user;
+          localStorage.setItem("userEmail",user.email)
           localStorage.setItem("userUid", user.uid)
           localStorage.setItem("isLoggedIn", true);
           setIsLoggedIn(true);
@@ -66,6 +67,7 @@ const AuthForm = ({ setIsLoggedIn }) => {
           });
 
           alert("Registration successful!");
+          localStorage.setItem("userEmail",user.email)
           localStorage.setItem("userUid", user.uid)
           localStorage.setItem("isLoggedIn", true);
           localStorage.removeItem("cartItems")

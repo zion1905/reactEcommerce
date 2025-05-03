@@ -1,149 +1,106 @@
-/* 
+/* ProfilePage.css */
+
+/* Page Container */
 .profile-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  background-color: #f5f7fa;
-  min-height: 100vh;
-  background-image: url(https://image.slidesdocs.com/responsive-images/background/blue-cross-medical-abstract-health-theme-blue-health-powerpoint-background_952ad55646__960_540.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-}
-
-.profile-card {
-  background-color: #fff;
-  padding: 30px 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
-}
-
-.profile-card h2 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #333;
-  font-size: 28px;
-}
-
-.profile-card label {
-  display: block;
-  margin: 12px 0 6px;
-  font-weight: 500;
-  color: #444;
-}
-
-.profile-card input {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-.profile-card input:disabled {
-  background-color: #f0f0f0;
-  color: #888;
-}
-
-.profile-card input:focus {
-  border-color: #1e90ff;
-  outline: none;
-}
-
-.edit-btn {
-  width: 100%;
-  margin-top: 24px;
-  padding: 12px;
-  background-color: #1e90ff;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.edit-btn:hover {
-  background-color: #0077e6;
-}
-
- */
-
-
- /* ProfilePage.css */
-
-.profile-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background-color: #f5f7fa;
-  min-height: 73.7vh;
+  padding: 50px 20px;
   background-image: url(https://image.slidesdocs.com/responsive-images/background/blue-cross-medical-abstract-health-theme-blue-health-powerpoint-background_952ad55646__960_540.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden; /* Prevents content from overflowing the page */
+  min-height: 85vh;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Card Container */
 .profile-card {
-  background-color: #fff;
-  padding: 30px 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 35px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 500px;
-  overflow-y: auto; /* Ensures content within the profile card can scroll if it's too long */
+  max-width: 520px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Heading */
 .profile-card h2 {
   text-align: center;
-  margin-bottom: 24px;
-  color: #333;
-  font-size: 28px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1e293b;
 }
 
+/* Label */
 .profile-card label {
   display: block;
-  margin: 12px 0 6px;
+  margin: 14px 0 6px;
   font-weight: 500;
-  color: #444;
+  font-size: 14px;
+  color: #334155;
 }
 
+/* Input */
 .profile-card input {
   width: 100%;
-  padding: 10px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: border-color 0.3s ease;
-}
-
-.profile-card input:disabled {
-  background-color: #f0f0f0;
-  color: #888;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
 .profile-card input:focus {
-  border-color: #1e90ff;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
   outline: none;
 }
 
+.profile-card input:disabled {
+  background-color: #e2e8f0;
+  color: #7b8794;
+}
+
+/* Button */
 .edit-btn {
+  margin-top: 30px;
   width: 100%;
-  margin-top: 24px;
-  padding: 12px;
-  background-color: #1e90ff;
-  color: #fff;
-  font-weight: 600;
+  padding: 14px;
+  background-color: #0ea5e9;
   border: none;
-  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .edit-btn:hover {
-  background-color: #0077e6;
+  background-color: #0284c7;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 25px;
+  }
+
+  .profile-card h2 {
+    font-size: 24px;
+  }
+
+  .edit-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
 }

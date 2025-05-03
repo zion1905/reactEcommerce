@@ -1,47 +1,53 @@
-/* html, body {
+/* General Reset */
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f6f8;
 }
 
+/* App Layout Wrapper */
 .app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Main Content Area */
 .main-content {
   flex: 1;
+  padding: 20px;
 }
 
+/* Footer Styles */
 .footer {
-    background-color: #258dc0;
-    padding:1px;
-    text-align: center;
-    color: #fff;
-  } */
+  background-color: #2563eb;
+  padding: 16px 0;
+  text-align: center;
+  color: #fff;
+  margin-top: auto;
+  font-size: 14px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-  
-  .app-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .main-content {
-    flex: 1;
-  }
-  
-  .footer {
-    background-color: #258dc0;
-    padding: 1px 0; /* Increased padding for more space */
-    text-align: center;
-    color: #fff;
-    margin-top: auto; /* Ensures the footer stays at the bottom */
-  }
-  
+/* Footer as Button Style */
+.footer-button {
+  display: inline-block;
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.footer-button:hover {
+  background-color: #1d4ed8;
+}

@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const product = location.state?.product;
   const isLoggedIn = localStorage.getItem("isLoggedIn") === 'true';
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   const [existsInCart,setExistsInCart]=useState(false)
@@ -63,8 +63,10 @@ const ProductDetail = () => {
 
       <p><strong>Description:</strong> {product.description}</p>
       <p><strong>Price:</strong> ₹{product.price}</p>
-      <p><strong>Size:</strong> {product.Size}</p>
-      <p><strong>Rating:</strong> {product.Rating}</p>
+      {!!product.size&&
+      <p><strong>Size:</strong> {product.size}</p>
+      }
+      <p><strong>Rating:</strong> {product.rating}</p>
 
 
       <div className="button-group">

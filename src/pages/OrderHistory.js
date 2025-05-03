@@ -49,8 +49,8 @@ export default function OrderHistory() {
     className="order-product-image"
   />
   <div className="order-details">
-    <div><strong>Size:</strong> {order.product.Size}</div>
-    <div><strong>Rating:</strong> ⭐ {order.product.Rating}</div>
+    <div><strong>Size:</strong> {order.product.size}</div>
+    <div><strong>Rating:</strong> ⭐ {order.product.rating}</div>
     <div><strong>Price:</strong> ₹{order.product.price}</div>
   </div>
 </div>
