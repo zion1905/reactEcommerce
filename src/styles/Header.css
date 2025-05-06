@@ -1,9 +1,9 @@
-/* === HEADER BASE STYLES === */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2563eb; /* Tailwind's blue-600 */
+  background-color: #2563eb; 
   color: white;
   padding: 12px 24px;
   position: relative;
@@ -11,7 +11,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* === LOGO === */
+
 .logo a {
   font-size: 24px;
   font-weight: bold;
@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 
-/* === NAVIGATION LINKS === */
+
 .nav-links-desktop {
   display: flex;
   gap: 16px;
@@ -38,7 +38,7 @@
   background-color: #1d4ed8;
 }
 
-/* === HAMBURGER === */
+
 .hamburger {
   display: none;
   font-size: 28px;
@@ -46,7 +46,7 @@
   color: white;
 }
 
-/* === AUTH SECTION === */
+
 .nav-auth {
   display: flex;
   gap: 10px;
@@ -68,7 +68,6 @@
   background: #e2e8f0;
 }
 
-/* === PROFILE DROPDOWN === */
 .profile-menu-container {
   position: relative;
 }
@@ -113,14 +112,14 @@
   background-color: #f2f2f2;
 }
 
-/* === SIDEBAR === */
+
 .sidebar {
   position: fixed;
   top: 0;
   left: -270px;
   width: 240px;
   height: 100vh;
-  background-color: #1e40af; /* Tailwind blue-800 */
+  background-color: #1e40af; 
   color: white;
   display: flex;
   flex-direction: column;
@@ -161,7 +160,7 @@
   margin-bottom: 16px;
 }
 
-/* === SIDEBAR OVERLAY === */
+
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -180,7 +179,7 @@
   visibility: visible;
 }
 
-/* === RESPONSIVE DESIGN === */
+
 @media (max-width: 768px) {
   .nav-links-desktop {
     display: none;

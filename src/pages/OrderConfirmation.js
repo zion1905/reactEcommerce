@@ -12,6 +12,7 @@ const OrderConfirmation = () => {
   const [quantity, setQuantity] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState("Cash on Delivery");
   const [isEditing, setIsEditing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [deliveryDetails, setDeliveryDetails] = useState({
     name: "",
     phone: "",
@@ -23,7 +24,7 @@ const OrderConfirmation = () => {
 
   useEffect(() => {
     const db = getDatabase();
-    const userUid = localStorage.getItem("userUid")
+    const userUid = localStorage.getItem("userUid");
     const userRef = ref(db, `users/${userUid}`);
     get(userRef)
       .then((snapshot) => {
@@ -39,10 +40,9 @@ const OrderConfirmation = () => {
       })
       .catch((error) => {
         console.error("Failed to load user data", error);
-      });
-
+      })
+      .finally(() => setIsLoading(false));
   }, []);
-
 
   const handleEditToggle = () => {
     setIsEditing((prev) => !prev);
@@ -76,25 +76,34 @@ const OrderConfirmation = () => {
       time: new Date().getTime(),
     };
 
-    let isFromCartPage = localStorage.getItem("isFromCartPage") === 'true'
+    let isFromCartPage = localStorage.getItem("isFromCartPage") === "true";
 
     if (isFromCartPage) {
-      let cartItems = JSON.parse(localStorage.getItem("cartItems"))||[]
-
+      let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
       cartItems = cartItems.filter(
         (item) => item.product.product !== product.product
       );
-
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
     }
-
 
     const orders = JSON.parse(localStorage.getItem("orderedItems")) || [];
     orders.push(orderData);
     localStorage.setItem("orderedItems", JSON.stringify(orders));
     navigate("/payment-success", { state: orderData });
   };
+
+  const isConfirmDisabled =
+    !deliveryDetails.name ||
+    !deliveryDetails.phone ||
+    !deliveryDetails.address ||
+    (paymentMethod === "Pay with Card" &&
+      (!deliveryDetails.cardNumber ||
+        !deliveryDetails.expiry ||
+        !deliveryDetails.cvv));
+
+  if (isLoading) {
+    return <p className="loading">Loading your details...</p>;
+  }
 
   if (!product) {
     return <p className="no-product">No product data found.</p>;
@@ -140,7 +149,11 @@ const OrderConfirmation = () => {
             <strong>Grand Total: ₹{grandTotal.toFixed(2)}</strong>
           </p>
 
-          <button onClick={handleConfirmOrder} className="confirm-btn">
+          <button
+            onClick={handleConfirmOrder}
+            className="confirm-btn"
+            disabled={isConfirmDisabled}
+          >
             {paymentMethod === "Pay with Card" ? "Pay Now" : "Confirm Order"}
           </button>
         </div>
@@ -179,15 +192,17 @@ const OrderConfirmation = () => {
             src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
             alt="Cash on Delivery"
             onClick={() => handlePaymentSelect("Cash on Delivery")}
-            className={`payment-method-image ${paymentMethod === "Cash on Delivery" ? "active" : ""
-              }`}
+            className={`payment-method-image ${
+              paymentMethod === "Cash on Delivery" ? "active" : ""
+            }`}
           />
           <img
             src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202306/ezgif-sixteen_nine_197.jpg?size=948:533"
             alt="Pay with Card"
             onClick={() => handlePaymentSelect("Pay with Card")}
-            className={`payment-method-image ${paymentMethod === "Pay with Card" ? "active" : ""
-              }`}
+            className={`payment-method-image ${
+              paymentMethod === "Pay with Card" ? "active" : ""
+            }`}
           />
         </div>
 

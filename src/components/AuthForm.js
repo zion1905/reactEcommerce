@@ -73,9 +73,9 @@ const AuthForm = ({ setIsLoggedIn }) => {
           localStorage.removeItem("cartItems")
           localStorage.removeItem("orderedItems")
           setIsLoggedIn(true);
-          // Check if the logged-in user is the admin
+
       
-            navigate("/home"); // Redirect to home page
+            navigate("/home"); 
           
         }
       } catch (error) {

@@ -1,11 +1,10 @@
-/* Home container styling */
 .home-container {
   background-color: #f7faff;
   padding: 30px;
   min-height: 100vh;
 }
 
-/* Heading style */
+
 .home-container h1 {
   text-align: center;
   color: #2c3e50;
@@ -15,7 +14,7 @@
   padding-bottom: 10px;
 }
 
-/* Product grid layout */
+
 .product-grid {
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +22,7 @@
   gap: 25px;
 }
 
-/* Each product card */
+
 .product-grid div {
   background-color: #fff;
   border: 1px solid #dcdcdc;
@@ -33,13 +32,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect */
+
 .product-grid div:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.15);
 }
 
-/* Product image */
+
 .product-grid img {
   width: 100%;
   height: 180px;
@@ -49,14 +48,13 @@
   cursor: pointer;
 }
 
-/* Product name */
 .product-grid h3 {
   font-size: 1.1rem;
   margin: 10px 0 5px 0;
   color: #34495e;
 }
 
-/* Product price */
+
 .product-grid p {
   font-size: 1rem;
   color: #27ae60;

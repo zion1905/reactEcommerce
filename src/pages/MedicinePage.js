@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from "react";
-// import ProductCard from "../components/ProductCard";
 import "../styles/HomePage.css";
 import { useNavigate } from "react-router-dom";
 import {db,ref,get} from "../utils/fireBase"

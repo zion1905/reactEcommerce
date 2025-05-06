@@ -5,7 +5,6 @@ import {db,ref,get} from "../utils/fireBase"
   
   const HomePage = () => {
     const navigate = useNavigate();
-    // const [searchTerm, setSearchTerm] = useState("");
     const searchTerm = ""
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [products,setProducts]=useState([])
@@ -34,7 +33,6 @@ import {db,ref,get} from "../utils/fireBase"
       <div className="home-container" style={{ padding: "20px" }}>
         <h1>Our Products</h1>
     
-        {/* Image Banner with Search Bar Overlay */}
         <div style={{ position: "relative", marginBottom: "30px" }}>
           <img
             src="https://img.freepik.com/premium-photo/pills-medical-equiupments-light-blue-banner-background_8087-1348.jpg"
@@ -45,7 +43,7 @@ import {db,ref,get} from "../utils/fireBase"
           
         </div>
     
-        {/* Product Grid */}
+    
         <div
           className="product-grid"
           style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}

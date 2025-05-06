@@ -89,7 +89,6 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
       {/* Sidebar Overlay */}
       <div className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`} onClick={closeSidebar}></div>
 
-      {/* Sidebar Menu (No profile, cart, order history, admin, or logout) */}
       <div className={`sidebar ${sidebarOpen ? "active" : ""}`}>
         <button className="close-btn" onClick={closeSidebar}>×</button>
         <Link to="/" onClick={closeSidebar}>Home</Link>

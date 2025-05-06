@@ -1,4 +1,4 @@
-/* Base Reset */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@ html, body {
   background-color: #f0f4f8;
 }
 
-/* Background Image Setup */
+
 .bg-setup {
   background-image: url("https://t4.ftcdn.net/jpg/04/24/30/93/360_F_424309320_UkOxg2z3sq7yXwGnWCO6xBXkRI4byhnI.jpg");
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@ html, body {
   padding: 20px;
 }
 
-/* Form Container */
+
 .form-container {
   width: 100%;
   max-width: 420px;
@@ -32,11 +32,10 @@ html, body {
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Header */
 .form-container h2 {
   text-align: center;
   font-size: 28px;
@@ -44,14 +43,21 @@ html, body {
   margin-bottom: 10px;
 }
 
-/* Inputs */
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .form-container input {
   width: 100%;
-  padding: 12px;
+  padding: 12px 10px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 14px;
-  transition: border 0.3s ease;
+ 
+  margin: 10px 0;
 }
 
 .form-container input:focus {
@@ -59,7 +65,14 @@ html, body {
   border-color: #0ea5e9;
 }
 
-/* Button */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+
 .form-container button {
   width: 100%;
   padding: 12px;
@@ -77,7 +90,7 @@ html, body {
   background-color: #0284c7;
 }
 
-/* Toggle Text */
+
 .toggle-text {
   text-align: center;
   font-size: 14px;
@@ -96,21 +109,13 @@ html, body {
   color: #0284c7;
 }
 
-/* Error Message */
-.error {
-  color: red;
-  font-size: 13px;
-  text-align: left;
-  margin-top: -10px;
-}
 
-/* Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 480px) {
   .form-container {
     padding: 24px;

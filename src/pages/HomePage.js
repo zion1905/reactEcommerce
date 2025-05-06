@@ -36,7 +36,7 @@ const HomePage = () => {
       
       useEffect(() => {
         if (searchTerm.trim() === "") {
-          setFilteredProducts(products); // reset to full list
+          setFilteredProducts(products);
         } else {
           const matched = allProducts.filter((product) =>
             product.product.toLowerCase().includes(searchTerm.trim().toLowerCase())
@@ -58,7 +58,7 @@ const HomePage = () => {
           }}
         />
 
-       {/* Search Bar */}
+      
        <input
             type="text"
             placeholder="Search products..."
