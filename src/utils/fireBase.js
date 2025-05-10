@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, update, ref, set, get, child,remove } from "firebase/database";
-import { getAuth } from "firebase/auth"; // ✅ Import auth
+import { getAuth } from "firebase/auth"; 
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,13 +13,10 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Database
 const db = getDatabase(app);
 
-// ✅ Initialize and export Auth
 const auth = getAuth(app);
 
 export { db, ref, get,getDatabase, update, child, set, auth,remove };
