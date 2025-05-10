@@ -1,14 +1,14 @@
-import React,{useEffect} from "react";
-import { Outlet} from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
 
 
-const Layout = ({isLoggedIn,setIsLoggedIn}) => {
+const Layout = ({ isLoggedIn, setIsLoggedIn }) => {
 
   useEffect(() => {
-      setIsLoggedIn(localStorage.getItem("isLoggedIn") === 'true')
+    setIsLoggedIn(localStorage.getItem("isLoggedIn") === 'true')
   })
 
   return (

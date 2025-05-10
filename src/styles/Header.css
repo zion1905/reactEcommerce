@@ -1,9 +1,8 @@
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2563eb; 
+  background-color: #1f88d9;
   color: white;
   padding: 12px 24px;
   position: relative;
@@ -35,7 +34,7 @@
 }
 
 .nav-links-desktop a:hover {
-  background-color: #1d4ed8;
+  background-color: #1f88d9;
 }
 
 
@@ -119,7 +118,7 @@
   left: -270px;
   width: 240px;
   height: 100vh;
-  background-color: #1e40af; 
+  background-color: #1f88d9;
   color: white;
   display: flex;
   flex-direction: column;
@@ -193,4 +192,3 @@
     padding: 14px 18px;
   }
 }
-

@@ -19,12 +19,12 @@ button {
   margin: 5px;
 }
 
- button:hover {
+button:hover {
   background-color: #0056b3;
 }
 
 
-.cancel-btn{
+.cancel-btn {
   background-color: rgb(241, 49, 49) !important;
 }
 
@@ -37,9 +37,8 @@ button {
 }
 
 
-
 .productCard {
-  width: 23%; 
+  width: 23%;
   border: 1px solid #ccc;
   padding: 15px;
   box-sizing: border-box;

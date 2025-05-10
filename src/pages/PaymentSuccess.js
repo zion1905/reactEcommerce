@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
 
     const timer = setTimeout(() => {
       navigate("/order-success", { state });
-    }, 5000); 
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [navigate, state]);

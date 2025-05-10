@@ -27,7 +27,7 @@ export default function OrderHistory() {
   }
 
   return (
-    <div style={{ minHeight: "85vh" }}>
+    <div >
       <div className="order-history-container">
         <h2 className="order-history-title">Order History</h2>
         {orders.length === 0 ? (
@@ -43,29 +43,29 @@ export default function OrderHistory() {
                   <span className="order-qty">Qty: {order.quantity}</span>
                 </div>
                 <div className="order-body">
-  <img
-    src={order.product.image}
-    alt={order.product.name}
-    className="order-product-image"
-  />
-  <div className="order-details">
-    <div><strong>Size:</strong> {order.product.size}</div>
-    <div><strong>Rating:</strong> ⭐ {order.product.rating}</div>
-    <div><strong>Price:</strong> ₹{order.product.price}</div>
-  </div>
-</div>
+                  <img
+                    src={order.product.image}
+                    alt={order.product.name}
+                    className="order-product-image"
+                  />
+                  <div className="order-details">
+                    <div><strong>Size:</strong> {order.product.size}</div>
+                    <div><strong>Rating:</strong> ⭐ {order.product.rating}</div>
+                    <div><strong>Price:</strong> ₹{order.product.price}</div>
+                  </div>
+                </div>
 
-<div className="order-total">
-  Total (+Delivery): ₹{order.total}
-</div>
+                <div className="order-total">
+                  Total (+Delivery): ₹{order.total}
+                </div>
 
-{order.isLessThanOneDay && (
-  <div className="order-actions">
-    <button className="cancel-btn" onClick={() => handleCancel(index)}>
-      Cancel Order
-    </button>
-  </div>
-)}
+                {order.isLessThanOneDay && (
+                  <div className="order-actions">
+                    <button className="cancel-btn" onClick={() => handleCancel(index)}>
+                      Cancel Order
+                    </button>
+                  </div>
+                )}
 
               </div>
             ))}

@@ -86,7 +86,6 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         </div>
       </header>
 
-      {/* Sidebar Overlay */}
       <div className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`} onClick={closeSidebar}></div>
 
       <div className={`sidebar ${sidebarOpen ? "active" : ""}`}>

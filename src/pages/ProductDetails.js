@@ -9,7 +9,6 @@ const ProductDetail = () => {
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
   const [quantity] = useState(1);
 
-  // ✅ Memoize cartItems to avoid re-creating it on every render
   const cartItems = useMemo(() => {
     return JSON.parse(localStorage.getItem("cartItems")) || [];
   }, []);
@@ -22,8 +21,8 @@ const ProductDetail = () => {
     );
     setExistsInCart(exists);
   }, [product, cartItems]);
-  
-  
+
+
 
   const handleBuyNow = () => {
     if (!isLoggedIn) {
@@ -66,8 +65,8 @@ const ProductDetail = () => {
 
       <p><strong>Description:</strong> {product.description}</p>
       <p><strong>Price:</strong> ₹{product.price}</p>
-      {!!product.size&&
-      <p><strong>Size:</strong> {product.size}</p>
+      {!!product.size &&
+        <p><strong>Size:</strong> {product.size}</p>
       }
       <p><strong>Rating:</strong> {product.rating}</p>
 

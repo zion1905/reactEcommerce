@@ -192,17 +192,15 @@ const OrderConfirmation = () => {
             src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
             alt="Cash on Delivery"
             onClick={() => handlePaymentSelect("Cash on Delivery")}
-            className={`payment-method-image ${
-              paymentMethod === "Cash on Delivery" ? "active" : ""
-            }`}
+            className={`payment-method-image ${paymentMethod === "Cash on Delivery" ? "active" : ""
+              }`}
           />
           <img
             src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202306/ezgif-sixteen_nine_197.jpg?size=948:533"
             alt="Pay with Card"
             onClick={() => handlePaymentSelect("Pay with Card")}
-            className={`payment-method-image ${
-              paymentMethod === "Pay with Card" ? "active" : ""
-            }`}
+            className={`payment-method-image ${paymentMethod === "Pay with Card" ? "active" : ""
+              }`}
           />
         </div>
 

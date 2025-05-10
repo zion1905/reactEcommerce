@@ -12,7 +12,6 @@ import AuthForm from "./components/AuthForm";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import ContactUs from "./pages/ContactUs";
 import OrderHistory from "./pages/OrderHistory";
-import CartConfimation from "./pages/CartConfirm";
 import Cart from "./pages/CartPage";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
@@ -50,7 +49,6 @@ function App() {
             <Route path="/confirm-order" element={<OrderConfirmation />} />
             <Route path="/order-success" element={<OrderSuccess />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/confirm-cart" element={<CartConfimation />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/admin" element={<AdminPage />} />

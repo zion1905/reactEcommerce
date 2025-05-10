@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 
 const AdminPage = () => {
   const [products, setProducts] = useState({});
-  const [editingProduct, setEditingProduct] = useState(null); 
+  const [editingProduct, setEditingProduct] = useState(null);
 
   const fetchProducts = async () => {
     try {
@@ -94,7 +94,7 @@ const AdminPage = () => {
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-  
+
 
 
   const initialValues = editingProduct
@@ -111,80 +111,80 @@ const AdminPage = () => {
       type: "",
     };
 
-    return (
-      <div>
-        <div className="admin-form" style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
-          <h2>{editingProduct ? "Edit Product" : "Add New Product"}</h2>
-          <Formik
-            enableReinitialize
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {() => (
-              <Form>
-                <Field name="product" placeholder="Product Name" />
-                <ErrorMessage name="product" component="div" className="error" />
-    
-                <Field name="image" placeholder="Image URL" />
-                <ErrorMessage name="image" component="div" className="error" />
-    
-                <Field as="textarea" name="description" placeholder="Description" />
-                <ErrorMessage name="description" component="div" className="error" />
-    
-                <Field name="price" type="number" placeholder="Price" />
-                <ErrorMessage name="price" component="div" className="error" />
-    
-                <Field name="rating" type="number" step="0.1" placeholder="Rating" />
-                <ErrorMessage name="rating" component="div" className="error" />
-    
-                <Field as="select" name="type" disabled={!!editingProduct}>
-                  <option value="" disabled>-- Select Category --</option>
-                  <option value="home">Home</option>
-                  <option value="firstAid">First Aid</option>
-                  <option value="medicine">Medicine</option>
-                </Field>
-                <ErrorMessage name="type" component="div" className="error" />
-    
-                <button type="submit" style={{ marginTop: "10px" }}>
-                  {editingProduct ? "Update Product" : "Add Product"}
+  return (
+    <div>
+      <div className="admin-form">
+        <h2>{editingProduct ? "Edit Product" : "Add New Product"}</h2>
+        <Formik
+          enableReinitialize
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {() => (
+            <Form>
+              <Field name="product" placeholder="Product Name" />
+              <ErrorMessage name="product" component="div" className="error" />
+
+              <Field name="image" placeholder="Image URL" />
+              <ErrorMessage name="image" component="div" className="error" />
+
+              <Field as="textarea" name="description" placeholder="Description" />
+              <ErrorMessage name="description" component="div" className="error" />
+
+              <Field name="price" type="number" placeholder="Price" />
+              <ErrorMessage name="price" component="div" className="error" />
+
+              <Field name="rating" type="number" step="0.1" placeholder="Rating" />
+              <ErrorMessage name="rating" component="div" className="error" />
+
+              <Field as="select" name="type" disabled={!!editingProduct}>
+                <option value="" disabled>-- Select Category --</option>
+                <option value="home">Home</option>
+                <option value="firstAid">First Aid</option>
+                <option value="medicine">Medicine</option>
+              </Field>
+              <ErrorMessage name="type" component="div" className="error" />
+
+              <button type="submit">
+                {editingProduct ? "Update Product" : "Add Product"}
+              </button>
+              {editingProduct && (
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={() => setEditingProduct(null)}
+                
+                >
+                  Cancel
                 </button>
-                {editingProduct && (
-                  <button
-                    type="button"
-                    className="cancel-btn"
-                    onClick={() => setEditingProduct(null)}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Cancel
-                  </button>
-                )}
-              </Form>
-            )}
-          </Formik>
-    
-          <hr style={{ margin: "30px 0" }} />
-        </div>
-    
-        <h2 style={{ marginLeft: "30px" }}>All Products</h2>
-        {Object.entries(products).map(([category, items]) => (
-          <div key={category}>
-            <h3 style={{ marginLeft: "30px" }}>{capitalizeFirst(category)}</h3>
-            <div className="allProductsContainer">
-              {Object.entries(items).map(([index, item]) => (
-                <div key={`${category}-${index}`} className="productCard">
-                  <strong>{item.product}</strong>
-                  <p>₹{item.price}</p>
-                  <img src={item.image} alt={item.product} />
-                  <button onClick={() => handleEdit(category, index, item)}>Edit</button>
-                  <button className="cancel-btn" onClick={() => handleDelete(category, index)}>Delete</button>
-                </div>
-              ))}
-            </div>
+              )}
+            </Form>
+          )}
+        </Formik>
+
+        <hr />
+      </div>
+
+      <h2>All Products</h2>
+      {Object.entries(products).map(([category, items]) => (
+        <div key={category}>
+          <h3>{capitalizeFirst(category)}</h3>
+          <div className="allProductsContainer">
+            {Object.entries(items).map(([index, item]) => (
+              <div key={`${category}-${index}`} className="productCard">
+                <strong>{item.product}</strong>
+                <p>₹{item.price}</p>
+                <img src={item.image} alt={item.product} />
+                <button onClick={() => handleEdit(category, index, item)}>Edit</button>
+                <button className="cancel-btn" onClick={() => handleDelete(category, index)}>Delete</button>
+              </div>
+            ))}
           </div>
-        ))}
-        </div> 
-    );
-  }
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default AdminPage;
