@@ -55,7 +55,7 @@ const ProductDetail = () => {
   };
 
   if (!product) {
-    return <p style={{ padding: "20px" }}>No product found.</p>;
+    return <p>No product found.</p>;
   }
 
   return (
@@ -80,7 +80,6 @@ const ProductDetail = () => {
         )}
       </div>
 
-      <button className="back-button" onClick={() => navigate(-1)}>← Go Back</button>
     </div>
   );
 };

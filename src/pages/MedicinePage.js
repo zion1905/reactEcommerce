@@ -26,9 +26,9 @@ const HomePage = () => {
         className="img"
       />
       <div className="product-grid">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div
-            key={index}
+           key={product.id}
 
           >
             <img

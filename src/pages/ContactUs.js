@@ -86,6 +86,8 @@ const ContactUs = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              className="input-box"
+
             />
           </div>
 
@@ -98,6 +100,7 @@ const ContactUs = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              className="input-box"
             />
           </div>
 
@@ -109,6 +112,8 @@ const ContactUs = () => {
               value={formData.message}
               onChange={handleChange}
               required
+              className="input-box"
+
             />
           </div>
 

@@ -3,7 +3,6 @@ import "../styles/ProfilePage.css";
 import { auth, db } from "../utils/fireBase";
 import { ref, get, set } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
-
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -43,7 +42,6 @@ const Profile = () => {
           console.error("Error loading profile data:", error);
         }
       } else {
-        // No user logged in
         setCurrentUser(null);
         setProfileData({
           firstName: "",
@@ -121,12 +119,11 @@ const Profile = () => {
           disabled={!isEditing}
         />
 
-        <button className="edit-btn" onClick={toggleEdit}>
+        <button className="edit-btn"  onClick={toggleEdit}>
           {isEditing ? "Save" : "Edit Profile"}
         </button>
       </div>
     </div>
   );
 };
-
 export default Profile;

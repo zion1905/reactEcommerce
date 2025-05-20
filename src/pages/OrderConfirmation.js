@@ -167,7 +167,7 @@ const OrderConfirmation = () => {
           name="name"
           value={deliveryDetails.name}
           onChange={handleInputChange}
-          readOnly={!isEditing}
+          disabled={!isEditing}
         />
 
         <label>Phone</label>
@@ -175,7 +175,7 @@ const OrderConfirmation = () => {
           name="phone"
           value={deliveryDetails.phone}
           onChange={handleInputChange}
-          readOnly={!isEditing}
+          disabled={!isEditing}
         />
 
         <label>Address</label>
@@ -183,7 +183,7 @@ const OrderConfirmation = () => {
           name="address"
           value={deliveryDetails.address}
           onChange={handleInputChange}
-          readOnly={!isEditing}
+          disabled={!isEditing}
         />
 
         <label>Payment Method</label>

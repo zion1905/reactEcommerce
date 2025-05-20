@@ -41,7 +41,7 @@ export default function Cart() {
                   <span className="order-qty">Qty: {order.quantity}</span>
                 </div>
                 <div>
-                  <button onClick={() => handleRemove(index)}>Remove</button>
+                  <button className="checkout-btn-rem" onClick={() => handleRemove(index)}>Remove</button>
                   <button className="checkout-btn" onClick={() => handleCheckout(order.product)}>Checkout</button>
 
                 </div>

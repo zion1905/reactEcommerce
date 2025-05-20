@@ -46,9 +46,9 @@ const HomePage = () => {
       <div
         className="product-grid"
       >
-        {filteredProducts.map((product, index) => (
+        {filteredProducts.map((product) => (
           <div
-            key={index}
+            key={product.id}
 
           >
             <img

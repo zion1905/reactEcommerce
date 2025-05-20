@@ -17,7 +17,7 @@ const AdminPage = () => {
   const [products, setProducts] = useState({});
   const [editingProduct, setEditingProduct] = useState(null);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async () => { 
     try {
       const categories = ["home", "firstAid", "medicine"];
       const allProducts = {};
@@ -187,4 +187,4 @@ const AdminPage = () => {
   );
 }
 
-export default AdminPage;
+export default AdminPage; 

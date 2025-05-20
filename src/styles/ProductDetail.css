@@ -47,38 +47,40 @@
   margin-top: 30px;
 }
 
-.order-details-container button {
+
+.buy-button {
+  background-color: #1e88e5;
+  color: #fff;
   padding: 12px 24px;
   font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
-}
 
-.buy-button {
-  background-color: #1e88e5;
-  color: #fff;
 }
 
 .buy-button:hover {
   background-color: #1565c0;
+  color: white;
 }
 
 .secondary-button {
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: #1e88e5;
+  padding: 0 25px;
+  font-weight: bold;
+  color:white;
+  border:none;
+  border-radius: 5px;
 }
-
 .secondary-button:hover {
-  background-color: #cfd8dc;
+  background-color: #1565c0;
+  color: white;
 }
 
 .back-button {
-  background-color: transparent;
-  color: #1e88e5;
-  text-decoration: underline;
-  margin-top: 20px;
+  background-color: #e0e0e0;
+
 }
 
 

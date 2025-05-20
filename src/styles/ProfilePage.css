@@ -70,27 +70,13 @@
   border-radius: 10px;
   font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .edit-btn:hover {
   background-color: #0284c7;
+    transition: background-color 0.3s;
+
 }
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
 @media (max-width: 480px) {
   .profile-card {
     padding: 25px;
