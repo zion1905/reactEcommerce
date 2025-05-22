@@ -28,7 +28,6 @@ function App() {
     <Router>
       <Routes>
 
-        {/* Public Routes using shared Layout */}
         <Route element={<Layout setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}  />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
@@ -38,10 +37,8 @@ function App() {
           <Route path="/product-details" element={<ProductDetail />} />
         </Route>
 
-        {/* Auth Route (Public) */}
         <Route path="/login" element={<AuthForm setIsLoggedIn={setIsLoggedIn} />} />
 
-        {/* Private Routes */}
         <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
           <Route element={<Layout setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} > 
             <Route path="/order-history" element={<OrderHistory />} />
