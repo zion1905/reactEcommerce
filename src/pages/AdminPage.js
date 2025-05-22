@@ -176,7 +176,7 @@ const AdminPage = () => {
                 <strong>{item.product}</strong>
                 <p>₹{item.price}</p>
                 <img src={item.image} alt={item.product} />
-                <button onClick={() => handleEdit(category, index, item)}>Edit</button>
+                <button onClick={() => handleEdit(category, index, item)} className="editbtn">Edit</button>
                 <button className="cancel-btn" onClick={() => handleDelete(category, index)}>Delete</button>
               </div>
             ))}
