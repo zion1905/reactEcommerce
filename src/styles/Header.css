@@ -7,12 +7,7 @@
   padding: 12px 24px;
   z-index: 1;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0; 
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  margin-bottom: 100px;
+ 
 }
 
 .logo a {

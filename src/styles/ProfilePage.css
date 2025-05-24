@@ -5,7 +5,7 @@
   padding: 50px 20px;
   background-image: url(https://image.slidesdocs.com/responsive-images/background/blue-cross-medical-abstract-health-theme-blue-health-powerpoint-background_952ad55646__960_540.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   min-height: 85vh;
   font-family: 'Poppins', sans-serif;
 }
